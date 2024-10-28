@@ -14,6 +14,7 @@ var camera=null
 var camera_player=preload("res://Scene/camera_player.tscn")
 
 var viewport_size:Vector2=Vector2.ZERO
+
 func _ready():
 	viewport_size=get_viewport_rect().size
 	
@@ -61,7 +62,7 @@ func new_game():
 	add_child(player)
 
 	camera=camera_player.instantiate()
-	camera.setup_camera($Player)
+	camera.setup_camera(player)
 	add_child(camera)
 	
 	if player:
