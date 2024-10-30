@@ -17,7 +17,7 @@ func _ready():
 	viewpoint_size=get_viewport_rect().size
 	
 	var os_name=OS.get_name()
-	if os_name == "IOS"||"Android":
+	if os_name == "iOS"||"Android":
 		use_accelerometer=true
 
 func _process(_delta):
@@ -34,7 +34,7 @@ func _physics_process(_delta):
 	if(velocity.y<=max_fall_velocity):
 		velocity.y +=gravity
 	
-	if false:#use_accelerometer:
+	if use_accelerometer:
 		var mobile_input=Input.get_accelerometer()
 		velocity.x=mobile_input.x*accelerometer_speed
 	else:
@@ -57,4 +57,5 @@ func _physics_process(_delta):
 	
 func jump():
 	velocity.y=jump_velocity
+	
 	

@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://r4cl340rkmki"]
+
+[ext_resource type="Script" path="res://Script/hud.gd" id="1_8e2hl"]
+[ext_resource type="Texture2D" uid="uid://c0wc1ao3244fj" path="res://Asset/Textures/UI/ScoreBox.png" id="1_vlii8"]
+[ext_resource type="Texture2D" uid="uid://do0et4bp8cdk0" path="res://Asset/Textures/UI/PauseBtn.png" id="2_j33n0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnpbl"]
+font_size = 28
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8e2hl")
+
+[node name="TopBarBK" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="TopBar"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 270.0
+offset_bottom = 75.0
+texture = ExtResource("1_vlii8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopBar/TextureRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -17.0
+offset_right = -13.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_lnpbl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 12.0
+offset_right = -21.0
+offset_bottom = 76.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_j33n0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="TopBar/PauseButton" to="." method="_on_pause_button_pressed"]

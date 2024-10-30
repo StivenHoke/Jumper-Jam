@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhwk8kve85pjl"]
+
+[ext_resource type="PackedScene" uid="uid://kisbexaqm4bu" path="res://Scene/texture_button.tscn" id="1_jiolf"]
+[ext_resource type="Script" path="res://Script/ChangeScreen.gd" id="1_xr0ln"]
+[ext_resource type="Texture2D" uid="uid://d1d2km33txg13" path="res://Asset/Textures/UI/PlayBtn.png" id="2_jock6"]
+[ext_resource type="Texture2D" uid="uid://bvotf2u7rd6ir" path="res://Asset/Textures/UI/BigLogo.png" id="3_0frpg"]
+
+[sub_resource type="Animation" id="Animation_86by7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/StartButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k23ja"]
+resource_name = "button_play"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/StartButton:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.85, 0.85)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8b81m"]
+_data = {
+"RESET": SubResource("Animation_86by7"),
+"button_play": SubResource("Animation_k23ja")
+}
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xr0ln")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" parent="Control" instance=ExtResource("1_jiolf")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = 88.0
+offset_right = 121.5
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(121.5, 115)
+texture_normal = ExtResource("2_jock6")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.5
+offset_top = -329.0
+offset_right = 242.5
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0frpg")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "button_play"
+libraries = {
+"": SubResource("AnimationLibrary_8b81m")
+}

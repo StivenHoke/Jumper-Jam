@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brgqjik3j8wp"]
+[gd_scene load_steps=8 format=3 uid="uid://brgqjik3j8wp"]
 
 [ext_resource type="Script" path="res://Script/Game.gd" id="1_fpcub"]
 [ext_resource type="PackedScene" uid="uid://ttw7wy1jrsrx" path="res://Scene/levelgenerator.tscn" id="3_76jae"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://diycrq7op80wa" path="res://Asset/Textures/BG/Layer1.png" id="4_fkppq"]
 [ext_resource type="Texture2D" uid="uid://blkhi33ff40k3" path="res://Asset/Textures/BG/Layer2.png" id="5_ckx31"]
 [ext_resource type="Texture2D" uid="uid://d3j3keesibovg" path="res://Asset/Textures/BG/Layer3.png" id="6_7ptfg"]
+[ext_resource type="PackedScene" uid="uid://r4cl340rkmki" path="res://Scene/hud.tscn" id="7_v5y6t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fpcub")
@@ -46,3 +47,11 @@ motion_mirroring = Vector2(0, 1935)
 scale = Vector2(0.675, 0.675)
 texture = ExtResource("6_7ptfg")
 centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("7_v5y6t")]
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
